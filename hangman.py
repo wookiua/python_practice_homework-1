@@ -162,16 +162,21 @@ def hangman(secret_word):
                     else:    
                         guesses_left = guesses_left - 1
             else:
-                warnings_left = warnings_left - 1
-                print("Oops! You've already guessed that letter. You have", warnings_left, "warnings left: ")  
+                if warnings_left >0:
+                    warnings_left = warnings_left - 1
+                    print("Oops! That is not a valid letter. You have", warnings_left, "warnings left: ")
+                else:
+                    print("Oops! That is not a valid letter. You don't have any warnings left: ")  
 
         else:
-          warnings_left = warnings_left - 1
-          print("Oops! That is not a valid letter. You have", warnings_left, "warnings left: ")
-
+          if warnings_left >0:
+              warnings_left = warnings_left - 1
+              print("Oops! That is not a valid letter. You have", warnings_left, "warnings left: ")
+          else:
+              print("Oops! That is not a valid letter. You don't have any warnings left: ")
         print(get_guessed_word(secret_word, letters_guessed))
 
-    if warnings_left == 0 or guesses_left <= 0:
+    if guesses_left <= 0:
         print("Sorry, you ran out of guesses. The word was", secret_word)  
     else:
         print("Congratulations, you won! Your total score for this game is:", guesses_left * len(secret_word))
@@ -270,7 +275,9 @@ def hangman_with_hints(secret_word):
     print("You have", warnings_left, "warnings left.")
 
 
-    while warnings_left > 0 and guesses_left > 0 and not set(secret_word) <= set(letters_guessed): 
+    while guesses_left > 0 and not set(secret_word) <= set(letters_guessed): 
+        if warnings_left <= 0:
+            guesses_left = guesses_left - 1
         print("-"*25) 
         print("You have", guesses_left,"guesses left.")  
         print("Available letters: ", get_available_letters(letters_guessed))
@@ -300,16 +307,21 @@ def hangman_with_hints(secret_word):
                     else:    
                         guesses_left = guesses_left - 1
             else:
-                warnings_left = warnings_left - 1
-                print("Oops! You've already guessed that letter. You have", warnings_left, "warnings left: ")  
+                if warnings_left >0:
+                    warnings_left = warnings_left - 1
+                    print("Oops! That is not a valid letter. You have", warnings_left, "warnings left: ")
+                else:
+                    print("Oops! That is not a valid letter. You don't have any warnings left: ")  
 
         else:
-          warnings_left = warnings_left - 1
-          print("Oops! That is not a valid letter. You have", warnings_left, "warnings left: ")
-
+          if warnings_left >0:
+              warnings_left = warnings_left - 1
+              print("Oops! That is not a valid letter. You have", warnings_left, "warnings left: ")
+          else:
+              print("Oops! That is not a valid letter. You don't have any warnings left: ")
         print(get_guessed_word(secret_word, letters_guessed))
 
-    if warnings_left == 0 or guesses_left <= 0:
+    if guesses_left <= 0:
         print("Sorry, you ran out of guesses. The word was", secret_word)  
     else:
         print("Congratulations, you won! Your total score for this game is:", guesses_left * len(secret_word))
