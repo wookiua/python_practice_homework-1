@@ -1,7 +1,7 @@
 # Problem Set 2, hangman.py
-# Name: 
-# Collaborators:
-# Time spent:
+# Name: Малиняк Олег км-24
+# Collaborators: самостійно
+# Time spent: 2,5 дні вільного часу
 
 # Hangman Game
 # -----------------------------------
