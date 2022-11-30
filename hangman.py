@@ -135,7 +135,9 @@ def hangman(secret_word):
     print("You have", warnings_left, "warnings left.")
 
 
-    while warnings_left > 0 and guesses_left > 0 and not set(secret_word) <= set(letters_guessed): 
+    while guesses_left > 0 and not set(secret_word) <= set(letters_guessed): 
+        if warnings_left <= 0:
+            guesses_left = guesses_left - 1
         print("-"*25) 
         print("You have", guesses_left,"guesses left.")  
         print("Available letters: ", get_available_letters(letters_guessed))
